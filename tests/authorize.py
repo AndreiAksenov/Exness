@@ -1,5 +1,4 @@
 from fixtures.utils import *
-import json
 
 
 def test_correct_username_password():
