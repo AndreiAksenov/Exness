@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def user_authorize(login: str, password: str):
@@ -8,4 +9,10 @@ def user_authorize(login: str, password: str):
         'password': password
     }
     auth_response = requests.post(url, data=auth_data)
-    assert auth_response.status_code == 200, 'unexpected status code, body: %s' % auth_response.content
+    return auth_response
+
+
+def get_token(response):
+    js = json.loads(response.content)
+    token = js['token']
+    return token
